@@ -59,7 +59,33 @@ module.exports = {
         res.status(200).send(info);
     },
 
-    
+    updateUser: function(req, res) {
+        console.log(req.body)
+        let newData = [...userData]
+        for (let i = 0; i < userData.length; i++) {
+            if(newData[i].id == req.params.userid) {
+                newData[i] = req.body
+            }
+        }
+        res.status(200).send(newData)
+    },
+
+    addUser: function(req, res) {
+        nextID = userData[userData.length-1].id + 1
+        let newUser = req.body
+        newUser.id = nextID
+        userData.push(newUser)
+        res.status(200).send(userData)
+    },
+
+    deleteUser: function(req, res) {
+        for(let i = 0; i < userData.length; i++) {
+            if (userData[i].id == req.params.userid) {
+                userData.splice(i, 1)
+            }
+        }
+        res.status(200).send(userData)
+    }
 
 
 

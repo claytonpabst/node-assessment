@@ -13,6 +13,12 @@ app.get('/api/users/:id', ctrl.getUserById)
 app.get('/api/admins', ctrl.getAdmins)
 app.get('/api/nonadmins', ctrl.getNonAdmins)
 app.get('/api/user_type/:usertype', ctrl.getUserType)
+
+app.put('/api/users/:userid', ctrl.updateUser)
+
+app.post('/api/users', ctrl.addUser)
+
+app.delete('/api/users/:userid', ctrl.deleteUser)
 //set to take in a paramater
 // app.get('/api/users/:id', ctrl.getAge)
 
