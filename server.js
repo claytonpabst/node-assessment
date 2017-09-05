@@ -10,6 +10,9 @@ app.use(bodyParser.json());
 
 app.get('/api/users', ctrl.getData)
 app.get('/api/users/:id', ctrl.getUserById)
+app.get('/api/admins', ctrl.getAdmins)
+app.get('/api/nonadmins', ctrl.getNonAdmins)
+app.get('/api/user_type/:usertype', ctrl.getUserType)
 //set to take in a paramater
 // app.get('/api/users/:id', ctrl.getAge)
 

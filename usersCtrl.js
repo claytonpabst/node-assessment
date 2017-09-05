@@ -31,8 +31,35 @@ module.exports = {
     },
 
     getUserById: function(req, res) {
+        console.log(req.params.id)
+        let user = {}
+        for (let i = 0; i < userData.length; i++) {
+            if (userData[i].id == req.params.id) {
+                user = userData[i]
+                res.status(200).send(user)
+                return
+            } 
+        }
+        res.status(404).json(null)
+    },
+
+    getAdmins: function(req, res) {
+        admins = userData.filter(userData => userData.type === 'admin')
+        res.status(200).send(admins)
+    },
+
+    getNonAdmins: function(req, res) {
+        nonAdmins = userData.filter(userData => userData.type !== 'admin')
+        res.status(200).send(nonAdmins)
+    },
+
+    getUserType: function(req, res) {
         console.log(req.params)
-    }
+        let info = userData.filter(userData => userData.type === req.params.usertype)
+        res.status(200).send(info);
+    },
+
+    
 
 
 
